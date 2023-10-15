@@ -27,7 +27,6 @@ function motaphoto_register_assets() {
 add_action( 'wp_enqueue_scripts', 'motaphoto_register_assets' );
 
 
-
 // Ajouter la prise en charge des images mises en avant
 add_theme_support( 'post-thumbnails' );
 
