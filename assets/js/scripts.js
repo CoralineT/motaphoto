@@ -1,5 +1,6 @@
 // MENU BURGER
 window.addEventListener("DOMContentLoaded", (event) => {
+
   function toggleMenu () {  
     const navbar = document.querySelector('.navbar-header');
     const burger = document.querySelector('.burger');
@@ -21,11 +22,20 @@ const modal = document.getElementById('myModal');
 const btn = document.getElementById("menu-item-15");
 // Bouton de fermeture de la modale
 const span = document.getElementsByClassName("close")[0];
+// Bouton contact Page single-photo
+const btnContact = document.getElementById("btn-contact");
 
 // Ouverture de la modale au clic sur "contact"
 btn.onclick = function() {
     modal.style.display = "block";
     modal.style.animationName = "fadein";
+}
+// Ouverture de la modale au clic sur le bouton "contact" de la page single-photo
+if ( btnContact != null) {
+  btnContact.onclick = function() {
+    modal.style.display = "block";
+    modal.style.animationName = "fadein";
+  }
 }
 
 // Fermeture de la modale au click sur le bouton fermeture

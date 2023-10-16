@@ -23,6 +23,8 @@ get_header(); // Inclut l'en-tête du thème
                 'after'  => '</div>',
             ));
 
+            // Si vous souhaitez afficher les commentaires, vous pouvez ajouter la fonction comment_template() ici
+
         endwhile;
         ?>
 
@@ -30,4 +32,5 @@ get_header(); // Inclut l'en-tête du thème
 </div><!-- #primary -->
 
 <?php
+get_sidebar(); // Inclut la barre latérale du thème
 get_footer(); // Inclut le pied de page du thème
