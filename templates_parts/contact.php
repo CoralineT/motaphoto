@@ -4,8 +4,11 @@
 
         <span class="close">&times;</span>
         
-        <?php $shortcode_output = do_shortcode('[contact-form-7 id="2ce96c8" title="Formulaire de contact"]');
-            echo $shortcode_output ?>
+        <?php
+        
+        $refPhoto = get_field('reference');
+         echo do_shortcode('[contact-form-7 id="2ce96c8" title="Formulaire de contact"]');
+        ?>
         
     </div>
 </div>
