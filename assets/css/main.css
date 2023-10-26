@@ -130,6 +130,41 @@
 .page-photo_section-bloc .photo-container {
   width: 50%;
   display: flex;
+  position: relative;
+  position: relative;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: end;
+  margin-top: 30px;
+}
+.page-photo_section-bloc .photo-container img {
+  width: 100%;
+  max-height: 100%;
+  transition: all 0.5s ease-in-out;
+}
+.page-photo_section-bloc .photo-container:hover .hover-photo {
+  background: rgba(0, 0, 0, 0.6);
+  display: block;
+}
+.page-photo_section-bloc .photo-container .hover-photo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.page-photo_section-bloc .photo-container .hover-photo .icone-plein-ecran {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  cursor: pointer;
+  width: 8%;
+  height: auto;
+}
+.page-photo_section-bloc img {
+  object-fit: contain;
+  width: 100%;
+  display: flex;
 }
 
 .detail-info-photo {
@@ -200,6 +235,74 @@
 .interaction-photo__navigation .arrows {
   display: flex;
   justify-content: space-between;
+}
+
+/* LIGHTBOX */
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  background-size: contain;
+  background-position: center;
+  animation-duration: 1s;
+}
+.lightbox_div-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50px;
+  margin-right: 50px;
+  min-height: 100vh;
+}
+.lightbox_div-img img {
+  max-width: 800px;
+  max-height: 600px;
+  object-fit: contain;
+}
+.lightbox_next, .lightbox_prev {
+  background-color: transparent;
+  color: white;
+  border: none;
+  position: fixed;
+  top: 50%;
+  cursor: pointer;
+  font-family: "space mono";
+}
+.lightbox_next {
+  left: auto;
+  right: 150px;
+}
+.lightbox_prev {
+  left: 150px;
+  right: auto;
+}
+.lightbox_close {
+  color: white;
+  font-size: 2em;
+  position: fixed;
+  top: 40px;
+  right: 40px;
+  cursor: pointer;
 }
 
 html {

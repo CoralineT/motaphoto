@@ -97,6 +97,32 @@ if( nextImage != null && arrowRight != null) {
 }
 
 
+//*************/
+// Lightbox
+//*************/
+
+// Icone plein écran
+const iconFullscreen = document.getElementById('icone-plein-ecran');
+//Lightbox
+const lightbox = document.getElementById('lightbox');
+// Bouton de fermeture
+const btnCloseLightbox = document.querySelector('.lightbox_close');
+
+// Ouverture de la lightbox
+iconFullscreen.onclick = function() {
+  lightbox.style.display = "block";
+  lightbox.style.animationName = "fadein";
+}
+
+// Fermeture de la lightbox
+btnCloseLightbox.onclick = function() {
+  lightbox.style.animationName = "fadeout";
+  setTimeout( () => {
+    lightbox.style.display = "none";
+  }, "1000");
+}
+
+
 
 
 });

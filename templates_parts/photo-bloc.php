@@ -21,9 +21,15 @@
         </ul>
 
 		<div class="photo-container">
-			<?php if (has_post_thumbnail()) : ?>
-				<img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title_attribute(); ?>" class="post-thumbnail"/>
-			<?php endif; ?>
+            <div class="photo single-similaire">
+                <?php if (has_post_thumbnail()) : ?>
+                    <img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title_attribute(); ?>"/>
+                <?php endif; ?>
+            </div>
+            <!-- Div pour le hover -->
+            <div class="hover-photo">
+                <a href="#"><img id="icone-plein-ecran" class="icone-plein-ecran" src="<?php echo get_template_directory_uri(); ?>/assets/images/Icon_fullscreen.png" alt="Icone plein écran"></a>
+            </div>
 		</div>
     </section>
 
