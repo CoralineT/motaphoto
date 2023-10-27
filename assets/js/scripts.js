@@ -92,6 +92,7 @@ if( nextImage != null && arrowRight != null) {
     'mouseenter',
     function(event) {
       nextImage.style.visibility = "visible";
+      previousImage.style.visibility = "hidden";
     }
   )
 }
@@ -103,6 +104,9 @@ if( nextImage != null && arrowRight != null) {
 
 // Icone plein écran
 const iconFullscreen = document.getElementById('icone-plein-ecran');
+// Icone plein écran recommandations
+const iconFullscreenRecommandations = document.querySelectorAll('.icone-plein-ecran.icone-plein-ecran-recommadations');
+console.log(iconFullscreenRecommandations);
 //Lightbox
 const lightbox = document.getElementById('lightbox');
 // Bouton de fermeture
@@ -113,6 +117,18 @@ iconFullscreen.onclick = function() {
   lightbox.style.display = "block";
   lightbox.style.animationName = "fadein";
 }
+
+iconFullscreenRecommandations.forEach((element) =>
+  element.addEventListener("click", function(e) {
+    const src = e.target.dataset.src;
+    console.log(src);
+    const img = document.getElementById("img-lightbox");
+    console.log(img);
+    img.dataset.src = src;
+    lightbox.style.display = "block";
+    lightbox.style.animationName = "fadein";
+  })
+)
 
 // Fermeture de la lightbox
 btnCloseLightbox.onclick = function() {

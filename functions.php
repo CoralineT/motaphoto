@@ -51,3 +51,8 @@ function add_last_nav_item($items, $args)
     return $items;
 }
 add_filter('wp_nav_menu_items', 'add_last_nav_item', 10, 2);
+
+
+
+// Récupérer les catégories
+

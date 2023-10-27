@@ -38,8 +38,8 @@
         min-height: 100vh;
     }
     &_div-img img {
-        max-width: 800px;
-        max-height: 600px;
+        max-width: 1000px;
+        max-height: 800px;
         object-fit: contain;
     }
     &_next,
@@ -54,10 +54,10 @@
     }
     &_next {
         left: auto;
-        right: 150px;
+        right: 100px;
     }
     &_prev {
-        left: 150px;
+        left: 100px;
         right: auto;
     }
     &_close {

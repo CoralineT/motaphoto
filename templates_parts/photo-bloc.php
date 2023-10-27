@@ -21,9 +21,9 @@
         </ul>
 
 		<div class="photo-container">
-            <div class="photo single-similaire">
+            <div class="photo">
                 <?php if (has_post_thumbnail()) : ?>
-                    <img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title_attribute(); ?>"/>
+                    <img src="<?php the_post_thumbnail_url('medium_large'); ?>" alt="<?php the_title_attribute(); ?>"/>
                 <?php endif; ?>
             </div>
             <!-- Div pour le hover -->
@@ -32,57 +32,64 @@
             </div>
 		</div>
     </section>
+    
+    <!-- Template bloc contact + prevnext -->
+<?php get_template_part('templates_parts/photo-prevnext'); ?>
 
-    <section class="interaction-photo">
-        <div class="interaction-photo__contact">
-            <p class="texte">Cette photo vous intéresse ?</p>
-            <input id="btn-contact" class="interaction-photo__contact__btn" type="button" value="Contact">
-        </div>
-        <div class="interaction-photo__navigation">
+
+</div>
+
+
+<!-- section recommandations -->
+<div class="page-recommandations">
+
+	<h3>VOUS AIMEREZ AUSSI</h3>
+	<div class="page-recommandations_photo">
+    
+        <?php   
+
+            $categorie = strip_tags(get_the_term_list($post->ID, 'categorie'));
+
+            // 1. On définit les arguments pour définir ce que l'on souhaite récupérer 
+            $args = array(
+                'post_type' => 'photo',
+                'posts_per_page' => 2,
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'categorie',
+                        'field' => 'slug',
+                        'terms' => $categorie,
+                    ),
+                ),
+            );
+
+            // 2. On exécute la WP Query
+            $my_query = new WP_Query( $args );
+
+            // 3. On lance la boucle !
+            if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->the_post();?> 
+
+                <div class="page-recommandations_photo_img"> <?php the_post_thumbnail(); ?> </div>
+                <!-- Div pour le hover -->
+                <div class="hover-photo">
+                    <a href="#"><img data-src="<?php the_post_thumbnail_url(); ?>" class="icone-plein-ecran icone-plein-ecran-recommadations" src="<?php echo get_template_directory_uri(); ?>/assets/images/Icon_fullscreen.png" alt="Icone plein écran"></a>
+                </div>
+        
             <?php
-                $prevPost = get_previous_post();
-                $nextPost = get_next_post();
-            ?>
-            <div class="arrows">
-                <?php if (!empty($prevPost)) : 
-                        $prevThumbnail = get_the_post_thumbnail_url( $prevPost->ID );
-                        $prevLink = get_permalink($prevPost); ?>
-                        <a id="arrow-left" href="<?= $prevLink; ?>">
-                            <img class="arrow arrow-gauche" src="<?= get_template_directory_uri(); ?>/assets/images/arrow-left.png" alt="Flèche pointant vers la gauche" />
-                        </a>
-                        <?php endif;
-                        if (!empty($nextPost)) :
-                            $nextThumbnail = get_the_post_thumbnail_url( $nextPost->ID );
-                            $nextLink = get_permalink($nextPost); ?>
-                            <a href="<?= $nextLink; ?>">
-                                <img id="arrow-right" class="arrow arrow-droite" src="<?= get_template_directory_uri(); ?>/assets/images/arrow-right.png" alt="Flèche pointant vers la droite" />
-                            </a>
-                <?php endif; ?>
-            </div>
-            
-            <div class="div-preview">
-            <div class="preview">
-                <?php if (!empty($prevPost)) :
-                        $prevThumbnail = get_the_post_thumbnail_url( $prevPost->ID );
-                        $prevLink = get_permalink($prevPost); ?>
-                        <a href="<?= $prevLink; ?>">
-                        <img id="previous-image" class="previous-image" src="<?php echo $prevThumbnail; ?>" alt="Prévisualisation image précédente">
-                        </a>
-                <?php endif; ?>
-            </div>
+            endwhile;
+            endif;
 
-            <div class="preview">
-                <?php if (!empty($nextPost)) :
-                            $nextThumbnail = get_the_post_thumbnail_url( $nextPost->ID );
-                            $nextLink = get_permalink($nextPost); ?>
-                            <a href="<?= $nextLink; ?>">
-                            <img id="next-image" class="next-image" src="<?php echo $nextThumbnail; ?>" alt="Prévisualisation image suivante">
-                            </a>
-                <?php endif ?>
-            </div>
-            </div>
-        </div>
-  </section>
+            // 4. On réinitialise à la requête principale (important)
+            wp_reset_postdata();
 
+        ?>
 
+	</div>
+
+</div>
+
+<div class="recommandations-btn-container">
+	<a href="<?php echo home_url('/'); ?>">
+		<button class="interaction-photo__contact__btn">Toutes les photos</button>
+	</a>
 </div>

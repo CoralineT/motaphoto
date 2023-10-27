@@ -8,13 +8,18 @@ html{
     margin: auto;
 }
 
+main {
+    margin-right: 2em;
+    margin-left: 2em;
+}
+
 a {
     text-decoration: none;
 }
 
 img {
     max-width: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 ul {
