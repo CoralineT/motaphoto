@@ -8,6 +8,21 @@ function motaphoto_register_assets() {
         '1.0', 
         true
     );
+    //Déclarer le fichier pour les requêtes ajax
+    wp_enqueue_script(
+       'motaphoto', 
+       get_template_directory_uri() . '/assets/js/motaphoto.js', array('jquery'), 
+       '1.0.0', 
+       true
+    );
+    // Passer les données de PHP vers Javascript de manière sécurisée
+    wp_localize_script(
+        'motaphoto', 
+        'motaphoto_js', 
+        array('ajax_url' => admin_url('admin-ajax.php'))
+    );
+
+
     // Déclarer le fichier style.css à la racine du thème
     wp_enqueue_style( 
         'style-css',
@@ -54,5 +69,63 @@ add_filter('wp_nav_menu_items', 'add_last_nav_item', 10, 2);
 
 
 
-// Récupérer les catégories
+
+
+
+// Filtres
+
+function motaphoto_request_filtered() {
+    
+    $categories = $_POST['categories'];
+    $formats = $_POST['formats'];
+    $dates = $_POST['dates'];
+    
+
+    if($categories != "") {
+        $argCategories = array(
+            'taxonomy' => 'categorie',
+            'field' => 'slug',
+            'terms' => $categories,
+        );
+    } else {
+        $argCategories = null;
+    }
+
+    if( $formats != "") {
+        $argFormats = array(
+            'taxonomy' => 'format',
+            'field' => 'slug',
+            'terms' => $formats,
+        );
+    } else {
+        $argFormats = null;
+    }
+
+    $query = new WP_Query([
+        'post_type' => 'photo',
+        'posts_per_page' => 8,
+        'meta_key' => 'annee',
+        'tax_query' => array(
+            $argCategories ?? "",
+            $argFormats ?? "",
+        ),
+        'meta_key' => 'annee',
+            'order' => $dates,
+            'orderby' => 'meta_value'
+    ]);
+
+
+    if( $query -> have_posts()) {
+        $response = $query;
+    } else {
+        $response = false;
+    }
+    
+    wp_send_json($response);
+    wp_die();
+
+    
+}
+add_action('wp_ajax_request_filtered', 'motaphoto_request_filtered');
+add_action('wp_ajax_nopriv_request_filtered', 'motaphoto_request_filtered');
 

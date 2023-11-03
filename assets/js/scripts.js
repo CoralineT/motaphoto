@@ -106,7 +106,6 @@ if( nextImage != null && arrowRight != null) {
 const iconFullscreen = document.getElementById('icone-plein-ecran');
 // Icone plein écran recommandations
 let iconFullscreenRecommandations = document.querySelectorAll('.icone-plein-ecran.icone-plein-ecran-recommadations');
-console.log(iconFullscreenRecommandations);
 //Lightbox
 const lightbox = document.getElementById('lightbox');
 // Bouton de fermeture
@@ -124,9 +123,7 @@ if(iconFullscreen != null ) {
 iconFullscreenRecommandations.forEach((element) =>
   element.addEventListener("click", function(e) {
     let src = e.target.dataset.src;
-    console.log(src);
     let img = document.getElementById("img-lightbox");
-    console.log(img);
     img.dataset.src = src;
 
     lightbox.style.display = "block";
@@ -141,6 +138,12 @@ btnCloseLightbox.onclick = function() {
     lightbox.style.display = "none";
   }, "1000");
 }
+
+
+
+
+
+
 
 
 
