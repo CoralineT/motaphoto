@@ -1,4 +1,24 @@
-<?php get_header(); ?>
+<?php get_header(); 
+
+// Chargement fichier JS utilisé pour la page d'accueil
+function motaphoto_register_js_motaphoto() {
+    //Déclarer le fichier pour les requêtes ajax
+    wp_enqueue_script(
+        'motaphoto', 
+        get_template_directory_uri() . '/assets/js/motaphoto.js', array('jquery'), 
+        '1.0.0', 
+        true
+     );
+     // Passer les données de PHP vers Javascript de manière sécurisée
+     wp_localize_script(
+         'motaphoto', 
+         'motaphoto_js', 
+         array('ajax_url' => admin_url('admin-ajax.php'))
+     );
+}
+add_action( 'wp_enqueue_scripts', 'motaphoto_register_js_motaphoto' );
+
+?>
 
 
 <!-- hero -->

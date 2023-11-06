@@ -10,4 +10,9 @@
         <a class="img-lightbox" href="#"><img id="img-lightbox" src="" alt="<?php the_title_attribute(); ?>"></a>
     </div>
 
+    <div class="lightbox-info">
+            <p class="lightbox-ref"></p>
+            <p class="lightbox-categorie"></p>
+    </div>
+
 </div>

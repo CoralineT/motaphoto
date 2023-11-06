@@ -68,4 +68,22 @@
         right: 40px;
         cursor: pointer;
     }
+
+    &-info{
+        position: absolute;
+        bottom: 50px;
+        right: 367px;
+        left: 367px;
+        display: flex;
+        justify-content: space-between;
+    
+    }
+    
+    &-ref,
+    &-categorie{
+        color: white;
+        font-family: "space mono";
+        text-transform: uppercase;
+        text-shadow: 1px 1px 3px #0D0D0D;
+    }
 }

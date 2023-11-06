@@ -51,12 +51,3 @@ function getImages(e) {
         console.error('There was a problem with the fetch operation: ', error);
       });
 }
-
-
-
-// CHARGER PLUS
-function chargerPlus() {
-
-  
-
-}

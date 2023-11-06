@@ -104,49 +104,94 @@ if( nextImage != null && arrowRight != null) {
 
 // Icone plein écran
 const iconFullscreen = document.getElementById('icone-plein-ecran');
-// Icone plein écran recommandations
+// Icone plein écran
 let iconFullscreenRecommandations = document.querySelectorAll('.icone-plein-ecran.icone-plein-ecran-recommadations');
 //Lightbox
 const lightbox = document.getElementById('lightbox');
 // Bouton de fermeture
 const btnCloseLightbox = document.querySelector('.lightbox_close');
 
+
+// Elements REF et CATEGORIE
+let lightboxRefElement = document.querySelector(".lightbox-ref");
+let lightboxCatElement = document.querySelector(".lightbox-categorie")
+
+let refValue ="";
+let catValue ="";
+
+
+
 // Ouverture de la lightbox
 if(iconFullscreen != null ) {
   iconFullscreen.addEventListener("click",function() {
     lightbox.style.display = "block";
     lightbox.style.animationName = "fadein";
+
     }
   )
 }
 
 iconFullscreenRecommandations.forEach((element) =>
+
   element.addEventListener("click", function(e) {
+    // Récupération du lien de l'image à afficher
     let src = e.target.dataset.src;
-    console.log(src);
+    //console.log(src);
     let img = document.getElementById("img-lightbox");
     img.src = src;
-    console.log(img);
+    //console.log(img);
 
-    lightbox.style.display = "block";
-    lightbox.style.animationName = "fadein";
+    // Référence et Catégorie
+    let parentImageGalerie = e.target.parentElement.parentElement;
+    //console.log(parentImageGalerie);
+    let contenuRefElement = parentImageGalerie.querySelector(".contenu-ref");
+    //console.log(contenuRefElement);
+    let contenuCatElement = parentImageGalerie.querySelector(".contenu-categorie");
+    //console.log(contenuCatElement);
+
+      refValue = contenuRefElement.textContent;
+      catValue = contenuCatElement.textContent;
+
+      lightboxRefElement.textContent = refValue;
+      lightboxCatElement.textContent = catValue;
+
+      lightbox.style.display = "block";
+      lightbox.style.animationName = "fadein";
+
+
+      // Flèche précédente
+      let lightboxPrev = document.querySelector('.lightbox_prev');
+      // Flèche suivante
+      let lightboxNext = document.querySelector('.lightbox_next');
+
+      lightboxPrev.addEventListener('click', lightboxNav );
+      lightboxNext.addEventListener('click', lightboxNav );
+
+      function lightboxNav(e) {
+
+        if( e.target == lightboxNext) {
+          
+        }
+
+      }
+
   })
 )
+
+
+
+
+
 
 // Fermeture de la lightbox
 btnCloseLightbox.onclick = function(e) {
   lightbox.style.animationName = "fadeout";
-  console.log(e.target.parentNode.querySelector('#img-lightbox').src);
+  //console.log(e.target.parentNode.querySelector('#img-lightbox').src);
   setTimeout( () => {
     lightbox.style.display = "none";
   }, "1000");
 //  e.target.parentNode.querySelector('#img-lightbox').src = null;
 }
-
-
-
-
-
 
 
 

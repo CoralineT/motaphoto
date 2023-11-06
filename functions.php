@@ -8,21 +8,7 @@ function motaphoto_register_assets() {
         '1.0', 
         true
     );
-    //Déclarer le fichier pour les requêtes ajax
-    wp_enqueue_script(
-       'motaphoto', 
-       get_template_directory_uri() . '/assets/js/motaphoto.js', array('jquery'), 
-       '1.0.0', 
-       true
-    );
-    // Passer les données de PHP vers Javascript de manière sécurisée
-    wp_localize_script(
-        'motaphoto', 
-        'motaphoto_js', 
-        array('ajax_url' => admin_url('admin-ajax.php'))
-    );
-
-
+    
     // Déclarer le fichier style.css à la racine du thème
     wp_enqueue_style( 
         'style-css',

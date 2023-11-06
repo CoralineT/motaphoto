@@ -174,15 +174,17 @@
         &_img {
             position: relative;
             flex: 1;
-            height: 595px;
+            height: 495px;
+            width: 564px;
             object-fit: contain;
             display: block;
             img {
                 height: 100%;
                 width: 100%;
-                width: 100%;
                 max-height: 100%;
                 transition: all 0.5s ease-in-out;
+                display: flex;
+                object-fit: cover;
             }
 
             &:hover .hover-photo-recommandations{
@@ -204,6 +206,47 @@
                     cursor: pointer;
                     width: 8%;
                     height: auto;
+                }
+                .icone-details-photo {
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    right: 0;
+                    left: 0;
+                    margin: auto;
+                    cursor: pointer;
+                    width: 8%;
+                    height: auto;
+                }
+                .contenu-ref {
+                    font-family: "Space Mono"; 
+                    font-weight: 400; 
+                    letter-spacing: 1.4px; 
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    margin: 0.5vw 1vw;
+                    cursor: pointer;
+                    width: 8%;
+                    height: auto;
+                    color: white;
+                    text-transform: uppercase;
+                }
+                .contenu-categorie {
+                    font-family: "Space Mono";
+                    font-weight: 400; 
+                    letter-spacing: 1.4px; 
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    margin: 0.5vw 2vw;
+                    cursor: pointer;
+                    width: 8%;
+                    height: auto;
+                    text-transform: uppercase;
+                    a {
+                        color: white;
+                    }
                 }
             }
         }
