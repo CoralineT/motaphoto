@@ -7,7 +7,7 @@
     <button class='lightbox_prev'>&larr; Précédente</button>
     
     <div class="lightbox_div-img">
-        <a class="img-lightbox" href="#"><img id="img-lightbox" src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title_attribute(); ?>"></a>
+        <a class="img-lightbox" href="#"><img id="img-lightbox" src="" alt="<?php the_title_attribute(); ?>"></a>
     </div>
 
 </div>

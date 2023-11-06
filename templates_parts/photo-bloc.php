@@ -69,10 +69,11 @@
             // 3. On lance la boucle !
             if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->the_post();?> 
 
-                <div class="page-recommandations_photo_img"> <?php the_post_thumbnail(); ?> </div>
+                <div class="page-recommandations_photo_img"> <?php the_post_thumbnail(); ?>
                 <!-- Div pour le hover -->
-                <div class="hover-photo hover-photo-recommandations">
-                    <img data-src="<?php the_post_thumbnail_url(); ?>" class="icone-plein-ecran icone-plein-ecran-recommadations" src="<?php echo get_template_directory_uri(); ?>/assets/images/Icon_fullscreen.png" alt="Icone plein écran">
+                    <div class="hover-photo hover-photo-recommandations">
+                        <img data-src="<?php the_post_thumbnail_url(); ?>" class="icone-plein-ecran icone-plein-ecran-recommadations" src="<?php echo get_template_directory_uri(); ?>/assets/images/Icon_fullscreen.png" alt="Icone plein écran">
+                    </div>
                 </div>
         
             <?php

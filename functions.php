@@ -79,7 +79,7 @@ function motaphoto_request_filtered() {
     $categories = $_POST['categories'];
     $formats = $_POST['formats'];
     $dates = $_POST['dates'];
-    
+    $paged = $_POST['paged'];
 
     if($categories != "") {
         $argCategories = array(
@@ -103,7 +103,8 @@ function motaphoto_request_filtered() {
 
     $query = new WP_Query([
         'post_type' => 'photo',
-        'posts_per_page' => 8,
+        'posts_per_page' => 12,
+        'paged' => $paged,
         'meta_key' => 'annee',
         'tax_query' => array(
             $argCategories ?? "",
@@ -120,7 +121,8 @@ function motaphoto_request_filtered() {
     } else {
         $response = false;
     }
-    
+    //$response = $query->found_posts;
+
     wp_send_json($response);
     wp_die();
 
@@ -128,4 +130,3 @@ function motaphoto_request_filtered() {
 }
 add_action('wp_ajax_request_filtered', 'motaphoto_request_filtered');
 add_action('wp_ajax_nopriv_request_filtered', 'motaphoto_request_filtered');
-

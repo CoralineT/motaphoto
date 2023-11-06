@@ -54,7 +54,7 @@
         'post_type' => 'photo',
         'orderby' => 'date',
         'order' => 'ASC',
-        'posts_per_page' => 8,
+        'posts_per_page' => 2,
         'paged' => 1,
     );
     ?>
@@ -110,7 +110,7 @@
 
     $galeries = new WP_Query([
         'post_type' => 'photo',
-        'posts_per_page' => 8,
+        'posts_per_page' => 12,
         'paged' => 1,
         'meta_key' => 'annee',
             'order' => '',
@@ -129,6 +129,10 @@
     <?php endif; ?>
 
     <?php wp_reset_postdata(); ?>
+</div>
+
+<div class="accueil-btn-container">
+        <button type="button" id="load-more-button">Afficher plus</button>
 </div>
 
 

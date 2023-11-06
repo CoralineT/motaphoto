@@ -123,8 +123,10 @@ if(iconFullscreen != null ) {
 iconFullscreenRecommandations.forEach((element) =>
   element.addEventListener("click", function(e) {
     let src = e.target.dataset.src;
+    console.log(src);
     let img = document.getElementById("img-lightbox");
-    img.dataset.src = src;
+    img.src = src;
+    console.log(img);
 
     lightbox.style.display = "block";
     lightbox.style.animationName = "fadein";
@@ -132,11 +134,13 @@ iconFullscreenRecommandations.forEach((element) =>
 )
 
 // Fermeture de la lightbox
-btnCloseLightbox.onclick = function() {
+btnCloseLightbox.onclick = function(e) {
   lightbox.style.animationName = "fadeout";
+  console.log(e.target.parentNode.querySelector('#img-lightbox').src);
   setTimeout( () => {
     lightbox.style.display = "none";
   }, "1000");
+//  e.target.parentNode.querySelector('#img-lightbox').src = null;
 }
 
 
