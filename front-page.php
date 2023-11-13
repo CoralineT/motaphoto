@@ -1,24 +1,4 @@
-<?php get_header(); 
-
-// Chargement fichier JS utilisé pour la page d'accueil
-function motaphoto_register_js_motaphoto() {
-    //Déclarer le fichier pour les requêtes ajax
-    wp_enqueue_script(
-        'motaphoto', 
-        get_template_directory_uri() . '/assets/js/motaphoto.js', array('jquery'), 
-        '1.0.0', 
-        true
-     );
-     // Passer les données de PHP vers Javascript de manière sécurisée
-     wp_localize_script(
-         'motaphoto', 
-         'motaphoto_js', 
-         array('ajax_url' => admin_url('admin-ajax.php'))
-     );
-}
-add_action( 'wp_enqueue_scripts', 'motaphoto_register_js_motaphoto' );
-
-?>
+<?php get_header(); ?>
 
 
 <!-- hero -->
@@ -79,10 +59,10 @@ add_action( 'wp_enqueue_scripts', 'motaphoto_register_js_motaphoto' );
     );
     ?>
 
-<!-- Section Filtres -->
-<section class="filtres">
-        <!-- Filtre catégorie -->
-        <form id="form-filters">
+<section class="filtre">
+    <!-- Filtres -->
+    <form id="form-filters">
+            <!-- Filtre catégorie -->
             <label for="categories"></label>
             <select name="categories" id="ajax_call_categories">
                 <option value="">Catégories</option>
@@ -123,6 +103,9 @@ add_action( 'wp_enqueue_scripts', 'motaphoto_register_js_motaphoto' );
 
 
 
+
+</section>
+
 <!-- Galerie photo -->
 
 <div class="galerie" id="ajax_return">
@@ -130,7 +113,7 @@ add_action( 'wp_enqueue_scripts', 'motaphoto_register_js_motaphoto' );
 
     $galeries = new WP_Query([
         'post_type' => 'photo',
-        'posts_per_page' => 12,
+        'posts_per_page' => 8,
         'paged' => 1,
         'meta_key' => 'annee',
             'order' => '',
@@ -152,7 +135,7 @@ add_action( 'wp_enqueue_scripts', 'motaphoto_register_js_motaphoto' );
 </div>
 
 <div class="accueil-btn-container">
-        <button type="button" id="load-more-button">Afficher plus</button>
+        <button type="button" id="load-more-button">Charger plus</button>
 </div>
 
 

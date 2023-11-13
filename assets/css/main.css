@@ -329,7 +329,7 @@
   letter-spacing: 1.4px;
   position: absolute;
   bottom: 0;
-  right: 0;
+  right: 3em;
   margin: 0.5vw 2vw;
   cursor: pointer;
   width: 8%;
@@ -601,7 +601,33 @@ li {
   max-height: 900px;
 }
 
-/************************** Accueil ********************************/
+/***************************Filtre**********************************/
+.filtre {
+  margin-right: 8.5em;
+  margin-top: 70px;
+}
+.filtre #form-filters {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.filtre #form-filters select {
+  width: 260px;
+  height: 43px;
+  background-color: white;
+  border: solid 1px #C9CCD1;
+  border-radius: 10px;
+  text-transform: uppercase;
+  font-family: "space mono";
+}
+.filtre #form-filters #ajax_call_categories {
+  margin-left: -3em;
+}
+.filtre #form-filters #ajax_call_formats {
+  margin-left: -26em;
+}
+
+/************************** Galerie ********************************/
 .galerie {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -649,6 +675,30 @@ li {
     padding-bottom: 24px;
   }
 }
+.accueil-btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.accueil-btn-container button {
+  border-radius: 2px;
+  background: #D8D8D8;
+  box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.02);
+  display: flex;
+  width: 22em;
+  height: 3.5em;
+  padding: 8px 15px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  cursor: pointer;
+}
+.accueil-btn-container button:hover {
+  color: #fff;
+  background-color: #000;
+}
+
 /************************** Modale ********************************/
 @keyframes fadein {
   from {

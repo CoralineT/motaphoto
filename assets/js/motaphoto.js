@@ -1,11 +1,16 @@
 
 // Appels Ajax filtres
+let sectionFiltres = document.querySelector('.filtre');
 document.addEventListener('DOMContentLoaded', function() {
-    document.querySelector('#ajax_call_categories').addEventListener('change', getImages );
-    document.querySelector('#ajax_call_formats').addEventListener('change', getImages );
-    document.querySelector('#ajax_call_dates').addEventListener('change', getImages );
-    document.querySelector('#load-more-button').addEventListener('click', getImages );
+  if ( sectionFiltres != null) {
+      document.querySelector('#ajax_call_categories').addEventListener('change', getImages );
+      document.querySelector('#ajax_call_formats').addEventListener('change', getImages );
+      document.querySelector('#ajax_call_dates').addEventListener('change', getImages );
+      document.querySelector('#load-more-button').addEventListener('click', getImages );
+  }
 });
+
+
 
 let page = 2;
 

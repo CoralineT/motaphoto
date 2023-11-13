@@ -1,6 +1,6 @@
 <div id="lightbox" class="lightbox">
 
-    <span class="lightbox_close">&times;</span>
+    <span class="lightbox_close">&times;</span>     
 
     <button class='lightbox_next'>Suivante &rarr;</button>
 
