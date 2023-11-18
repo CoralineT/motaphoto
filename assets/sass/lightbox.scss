@@ -38,8 +38,8 @@
         min-height: 100vh;
     }
     &_div-img img {
-        max-width: 1000px;
-        max-height: 800px;
+        max-width: 1000vw;
+        max-height: 800vh;
         object-fit: contain;
     }
     &_next,
@@ -54,10 +54,10 @@
     }
     &_next {
         left: auto;
-        right: 100px;
+        right: 2em;
     }
     &_prev {
-        left: 100px;
+        left: 2em;
         right: auto;
     }
     &_close {
@@ -71,9 +71,9 @@
 
     &-info{
         position: absolute;
-        bottom: 50px;
-        right: 367px;
-        left: 367px;
+        bottom: 4em;
+        right: 4em;
+        left: 4em;
         display: flex;
         justify-content: space-between;
     
@@ -85,5 +85,16 @@
         font-family: "space mono";
         text-transform: uppercase;
         text-shadow: 1px 1px 3px #0D0D0D;
+    }
+}
+
+@media all and (max-width: 425px) {
+    .lightbox {
+        &_prev {
+            left: 0;
+        }
+        &_next {
+            right: 0;
+        }
     }
 }

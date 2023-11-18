@@ -8,12 +8,8 @@
         &_info {
             display: inline-flex;
             flex-direction: column;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            align-self: end;
             gap: 7px;
             width: 50%;
-            padding: 0;
             margin: 0;
             border-bottom: 1px solid black;
             padding-right: 17em;
@@ -21,7 +17,7 @@
             margin-right: 2em;
             h1 {
                 color: #000;
-                font-family: Space Mono;
+                font-family: 'Space Mono';
                 font-size: 66px;
                 font-style: italic;
                 font-weight: 400;
@@ -31,8 +27,6 @@
             }
         }
         .photo-container {
-            width: 50%;
-            display: flex;
             position: relative;
             width: 50%;
             height: 100%;
@@ -261,4 +255,62 @@
         margin-right: auto;
         margin-left: auto;
     }
+}
+
+
+@media all and (max-width: 680px) {
+    .page-photo {
+        &_section-bloc {
+            flex-direction: column-reverse;
+            &_info {
+                padding-right: 0;
+                width: 100%;
+                margin-right: 0;
+            }
+            .photo-container {
+                width: 100%;
+                .photo {
+                    width: 100%;
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+
+        }
+    }
+
+    .interaction-photo {
+        flex-direction: column;
+        &__contact {
+            flex-direction: column;
+            gap: 0;
+            justify-content: center;
+            align-items: flex-start;
+            padding-left: 2em;
+        }
+        &__navigation {
+            display: none;
+        }
+    }
+
+    .page-recommandations {
+        h3 {
+            text-align: center;
+        }
+        &_photo {
+            flex-direction: column;
+            &_img {
+                height: 335px;
+                width: 84%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }  
+    }
+
+    .recommandations-btn-container {
+        display: none;
+    }
+
 }

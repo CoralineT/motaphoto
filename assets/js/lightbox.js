@@ -1,8 +1,8 @@
 window.addEventListener("DOMContentLoaded", () => {
 
 //*************/
-  // Lightbox
-  //*************/
+// Lightbox
+//*************/
 
   // Icone plein écran
   const iconFullscreen = document.getElementById('icone-plein-ecran');
@@ -32,81 +32,82 @@ window.addEventListener("DOMContentLoaded", () => {
     )
   }
 
-  iconFullscreenRecommandations.forEach((element) =>
+  function openLightbox(e) {
+    // Récupération du lien de l'image à afficher
+    let src = e.target.dataset.src;
+    let img = document.getElementById("img-lightbox");
+    img.src = src;
 
-    element.addEventListener("click", function(e) {
-      // Récupération du lien de l'image à afficher
-      let src = e.target.dataset.src;
-      let img = document.getElementById("img-lightbox");
-      img.src = src;
+    // Référence et Catégorie
+    let parentImageGalerie = e.target.parentElement.parentElement;
+    let contenuRefElement = parentImageGalerie.querySelector(".contenu-ref");
+    let contenuCatElement = parentImageGalerie.querySelector(".contenu-categorie");
 
-      // Référence et Catégorie
-      let parentImageGalerie = e.target.parentElement.parentElement;
-      let contenuRefElement = parentImageGalerie.querySelector(".contenu-ref");
-      let contenuCatElement = parentImageGalerie.querySelector(".contenu-categorie");
+    refValue = contenuRefElement.textContent;
+    catValue = contenuCatElement.textContent;
 
-      refValue = contenuRefElement.textContent;
-      catValue = contenuCatElement.textContent;
+    lightboxRefElement.textContent = refValue;
+    lightboxCatElement.textContent = catValue;
 
-      lightboxRefElement.textContent = refValue;
-      lightboxCatElement.textContent = catValue;
+    lightbox.style.display = "block";
+    lightbox.style.animationName = "fadein";
 
-      lightbox.style.display = "block";
-      lightbox.style.animationName = "fadein";
+    // Navigation lightbox
 
-      // Navigation lightbox
+    // Flèche précédente
+    let lightboxPrev = document.querySelector('.lightbox_prev');
+    // Flèche suivante
+    let lightboxNext = document.querySelector('.lightbox_next');
 
-      // Flèche précédente
-      let lightboxPrev = document.querySelector('.lightbox_prev');
-      // Flèche suivante
-      let lightboxNext = document.querySelector('.lightbox_next');
+    
 
-      
+    lightboxPrev.addEventListener('click', lightboxNav );
+    lightboxNext.addEventListener('click', lightboxNav );
 
-      lightboxPrev.addEventListener('click', lightboxNav );
-      lightboxNext.addEventListener('click', lightboxNav );
+    let allGaleriePosts = document.querySelectorAll('.galerie-post .attachment-post-thumbnail');
+    let allGalerie = document.querySelectorAll('.page-recommandations_photo_img');
 
-      let allGaleriePosts = document.querySelectorAll('.galerie-post .attachment-post-thumbnail');
-      let allGalerie = document.querySelectorAll('.page-recommandations_photo_img');
+    let allGaleriePostsSrc = [];
+    allGaleriePosts.forEach((element)=>{
+      allGaleriePostsSrc.push(element.dataset.src);
+    });
 
-      let allGaleriePostsSrc = [];
-      allGaleriePosts.forEach((element)=>{
-        allGaleriePostsSrc.push(element.dataset.src);
-      });
+    function lightboxNav(e) {
 
-      function lightboxNav(e) {
-
-        // Source de l'image
-        let srcCurrentPicture = document.getElementById('img-lightbox').src;
-        // Index de la source de l'image
-        let currentIndex = allGaleriePostsSrc.indexOf(srcCurrentPicture);
+      // Source de l'image
+      let srcCurrentPicture = document.getElementById('img-lightbox').src;
+      // Index de la source de l'image
+      let currentIndex = allGaleriePostsSrc.indexOf(srcCurrentPicture);
 
 
-        if( e.target == lightboxPrev && currentIndex > 0) {
-          currentIndex--
-        } else if( e.target == lightboxNext && currentIndex < allGaleriePostsSrc.length -1) {
-          currentIndex++;
-        }
-        if( currentIndex == 0) {
-          lightboxPrev.style.visibility = "hidden"; 
-        } else {
-          lightboxPrev.style.visibility = "visible";
-        }
-        if( currentIndex == allGaleriePostsSrc.length -1) {
-          lightboxNext.style.visibility = "hidden"; 
-        } else {
-          lightboxNext.style.visibility = "visible";
-        }
-        
-        // On change la source de l'image avec le nouvel index
-        img.src = allGaleriePostsSrc[currentIndex];
-        // Référence
-        lightboxRefElement.textContent = allGalerie[currentIndex].children[2].children[2].textContent;
-        // Catégorie
-        lightboxCatElement.textContent = allGalerie[currentIndex].children[2].children[3].textContent;
+      if( e.target == lightboxPrev && currentIndex > 0) {
+        currentIndex--
+      } else if( e.target == lightboxNext && currentIndex < allGaleriePostsSrc.length -1) {
+        currentIndex++;
       }
+      if( currentIndex == 0) {
+        lightboxPrev.style.visibility = "hidden"; 
+      } else {
+        lightboxPrev.style.visibility = "visible";
+      }
+      if( currentIndex == allGaleriePostsSrc.length -1) {
+        lightboxNext.style.visibility = "hidden"; 
+      } else {
+        lightboxNext.style.visibility = "visible";
+      }
+      
+      // On change la source de l'image avec le nouvel index
+      img.src = allGaleriePostsSrc[currentIndex];
+      // Référence
+      lightboxRefElement.textContent = allGalerie[currentIndex].children[2].children[2].textContent;
+      // Catégorie
+      lightboxCatElement.textContent = allGalerie[currentIndex].children[2].children[3].textContent;
+    }
+  }
 
-    })
+
+  iconFullscreenRecommandations.forEach((element) =>
+    element.addEventListener("click", openLightbox)
   )
 
   // Fermeture de la lightbox
@@ -123,3 +124,4 @@ window.addEventListener("DOMContentLoaded", () => {
   
 
 })
+

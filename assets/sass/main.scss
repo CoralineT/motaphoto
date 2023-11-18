@@ -32,10 +32,14 @@ li {
     align-items: center;
 }
 
+@media screen and (max-width:768px) {
+    html, body, main {
+        width: fit-content;
+    }
+}
+
  /************************** Header ********************************/
  .header {
-    margin-top: 28px;
-    margin-bottom: 66px;
     margin: 0 10%;
     .container-header {
         height: 5em;
@@ -75,9 +79,18 @@ li {
     display: none;
 }
   
-@media screen and (max-width:767.98px) {
+@media screen and (max-width:768px) {
+    .header {
+        margin: 0 0%;
+    }
     .navbar {
         display: none;
+        .menu-item {
+            padding-left: 0;
+            a {
+                margin-top: 38px;
+            }
+        }
     }
   
     .burger {
@@ -126,17 +139,22 @@ li {
       transform:rotate(-45deg);
     }
     .show-nav .navbar {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         position: fixed;
-        top: 100px;
-        background: white;
+        top: 70px;
+        background: red;
         width: 100%;
         height: 100%;
         left: 0;
-        line-height: 4.5em;
+        line-height: 2.5em;
+        z-index: 1;
         a {
             font-size: 2em;
             margin-top: 47px;
+            color: white;
         }
     }
 }
@@ -145,25 +163,18 @@ li {
 /************************** Hero **********************************/
 .hero-area {
     .hero-thumbnail {
-        position: relative;
-        margin: auto;
-        align-items: center;
-        width: 100%;
-        max-height: 966px;
         .title-hero {
             position: absolute;
             font-family: "Space Mono";
             font-size: 96px;
             font-style: italic;
             font-weight: 700;
-            line-height: normal;
             text-transform: uppercase;
-            top: 50%;
+            top: calc(50% - 72px);
             left: 50%;
             transform: translate3d(-50%, -50%, 0);
             width: 100%;
             text-align: center;
-            line-height: 142px;
             color: transparent;
             -webkit-text-stroke: 2px rgb(255, 255, 255);
         }
@@ -171,34 +182,56 @@ li {
 }
 
 .hero-area img {    
-    margin: auto;
     object-fit: cover;
-    object-position: 50% 50%;
     min-width: 100%;
-    height: auto;
-    max-height: 900px;
+    height: calc(100vh - 5em);
+}
+
+@media screen and (max-width:768px) {
+    .hero-area {
+        .hero-thumbnail {
+            margin-bottom: 3em;
+            .title-hero {
+                font-size: 55px;
+                top: calc(50% - 16px);
+                left: 49%;
+            }
+        }
+    }
 }
 
 
 /***************************Filtre**********************************/
 .filtre{
-    margin-right: 8.5em;
-	margin-top: 70px;
+    margin: 2em 8.5em 0 -3.5em;
     #form-filters {
         display: flex;
         justify-content: space-between;
-        width: 100%; 
         select{
-            width: 260px;
-            height: 43px;
-            background-color: white;
+            height: fit-content;
+            background-color: transparent;
             border: solid 1px #C9CCD1;
             border-radius: 10px;
             text-transform: uppercase;
             font-family: "space mono";
+            padding: 0 1em;
+            font-size: 1.2em;
+            &:focus {
+                border: 1.3px solid #215AFF;
+                outline: none;
+            }
+            option {
+                &:hover {
+                    background: #FFD6D6 !important;
+                }
+                &:checked {
+                    background: #E00000 !important;
+                }
+                
+            }
         }
         #ajax_call_categories {
-            margin-left: -3em;
+            margin: 0 2em 0 -3em;
         }
         #ajax_call_formats {
             margin-left: -26em;
@@ -206,6 +239,28 @@ li {
     }
 }
 
+@media screen and (max-width:768px) {
+    .filtre {
+        margin: 0;
+        #form-filters {
+            display: flex;
+            flex-direction: column;
+            align-items :center;
+            select{
+                width: 22em;
+                height: 3em;
+            }
+            #ajax_call_categories {
+                margin: 0;
+                margin-bottom: 1em;
+            }
+            #ajax_call_formats {
+                margin: 0;
+                margin-bottom: 1em;
+            }
+        }
+    }
+}
 
 
 /************************** Galerie ********************************/
@@ -213,7 +268,7 @@ li {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px 20px;
-    margin: 20px 135px 20px 135px;
+    margin: 2% 10%;
     .image-galerie {
         position: relative;
         width: 564px;
@@ -222,18 +277,41 @@ li {
     img {
         object-fit: cover;
         width: 100%;
-        height: 495px;
     }
 }
 
+@media all and (max-width: 768px) {
+    .galerie {
+        grid-template-columns: 1fr;
+        width: 100%;
+        margin-top: 2em;
+        margin-bottom: 2em;
+        .image-galerie {
+            width: 100%;
+            height: 495px;
+        }
+        img {
+            width: 100%;
+            height: 495px;
+        }
+    }
+
+
+}
+
+@media all and (max-width: 425px) {
+    .galerie {
+        margin: 2em 0;
+    }
+}
 
 /************************** Footer ********************************/
 .site__footer {
-    width: 100%;
+    padding: 3% 10%;
+    border-top: 1px solid;
+    margin: 3% 0 0 0;
     .footer_nav {
         list-style: none;
-        padding: 13px 10%;
-        border-top: 1px solid;
         display: flex;
         justify-content: space-evenly;
         a {
@@ -241,18 +319,6 @@ li {
             cursor: pointer;
             color: black;
             font-family: 'Space Mono', monospace;
-        }
-    }
-}
-@media all and (max-width: 680px){
-    .footer_nav {
-        flex-direction: column;
-        align-items: center;
-        padding-top: 44px;
-        margin-top: 43px;
-        .menu-item{
-            padding-left: 0;
-            padding-bottom: 24px;
         }
     }
 }
@@ -271,9 +337,9 @@ li {
         padding: 8px 15px;
         justify-content: center;
         align-items: center;
-        gap: 10px;
         border: none;
         cursor: pointer;
+        font-family: 'Space Mono'; 
         &:hover {
             color: #fff;
             background-color: #000;
@@ -281,6 +347,19 @@ li {
     }
 }
 
+
+@media all and (max-width: 768px){
+    .footer_nav {
+        flex-direction: column;
+        align-items: center;
+        padding-top: 44px;
+        margin-top: 43px;
+        .menu-item{
+            padding-left: 0;
+            padding-bottom: 24px;
+        }
+    }
+}
 
 /************************** Modale ********************************/
 @keyframes fadein {
@@ -300,7 +379,5 @@ li {
         opacity: 0;
     }
 }
-
-
 
 

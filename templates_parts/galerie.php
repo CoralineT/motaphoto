@@ -1,10 +1,5 @@
 <div class="galerie-post">
     <article>
-
-            <!-- Photo -->
-            <!-- <div class="image-galerie">
-                <a class="img-galerie" href="<?php //the_permalink(); ?>"><?php //the_post_thumbnail(); ?></a>
-            </div> -->
             <div class="page-recommandations_photo_img"> <?php the_post_thumbnail(); ?>
                     <div class="hover-photo hover-photo-recommandations">
                             <a href="#">

@@ -64,7 +64,7 @@
     <form id="form-filters">
             <!-- Filtre catégorie -->
             <label for="categories"></label>
-            <select name="categories" id="ajax_call_categories">
+            <select name="categories" id="ajax_call_categories" size=1>
                 <option value="">Catégories</option>
                 <?php
                 if (!empty($categories) && !is_wp_error($categories)) {
@@ -79,7 +79,7 @@
 
         <!-- Filtre formats -->
             <label for="formats"></label>
-            <select name="formats" id="ajax_call_formats">
+            <select name="formats" id="ajax_call_formats" size=1>
                 <option value="">Formats</option>
                 <?php
                 if (!empty($formats) && !is_wp_error($formats)) {
@@ -94,7 +94,7 @@
 
         <!-- Filtre trier par -->
             <label for="dates"></label>
-            <select name="dates" id="ajax_call_dates">
+            <select name="dates" id="ajax_call_dates" size=1>
                 <option value="">Trier par</option>
                 <option value="DESC">Nouveautés</option>
                 <option value="ASC">Les plus anciennes</option>  
@@ -124,7 +124,6 @@
     if ($galeries->have_posts()) : ?>
 
         <?php while ($galeries->have_posts()) : $galeries->the_post(); ?>
-            
             <?php get_template_part('templates_parts/galerie'); ?>
         
         <?php endwhile; ?>
