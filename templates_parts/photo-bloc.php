@@ -23,7 +23,7 @@
 		<div class="photo-container">
             <div class="photo">
                 <?php if (has_post_thumbnail()) : ?>
-                    <img src="<?php the_post_thumbnail_url('medium_large'); ?>" alt="<?php the_title_attribute(); ?>"/>
+                    <img data-src="<?php the_post_thumbnail_url(); ?>" src="<?php the_post_thumbnail_url('medium_large'); ?>" alt="<?php the_title_attribute(); ?>"/>
                 <?php endif; ?>
             </div>
             <!-- Div pour le hover -->

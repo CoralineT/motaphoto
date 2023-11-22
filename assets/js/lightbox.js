@@ -22,9 +22,13 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // Ouverture de la lightbox
   if(iconFullscreen != null ) {
-    iconFullscreen.addEventListener("click",function() {
+    iconFullscreen.addEventListener("click",function(e) {
       lightbox.style.display = "block";
       lightbox.style.animationName = "fadein";
+      // Récupération du lien de l'image à afficher
+     let src = e.target.parentElement.parentElement.parentElement.querySelector(".photo img").dataset.src;
+     let img = document.getElementById("img-lightbox");
+     img.src = src;
       }
     )
   }
