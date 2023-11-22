@@ -32,6 +32,10 @@ li {
     align-items: center;
 }
 
+#sidebar {
+    display: none;
+}
+
 @media screen and (max-width:768px) {
     html, body, main {
         width: fit-content;
@@ -295,8 +299,6 @@ li {
             height: 495px;
         }
     }
-
-
 }
 
 @media all and (max-width: 425px) {

@@ -2,7 +2,6 @@
 
 
 <!-- hero -->
-
 <div class="hero-area">
     <div class="hero-thumbnail">
         <!-- Initialisation du post à afficher -->
@@ -38,7 +37,6 @@
 
 
 <!-- Section filtres -->
-
 <?php
     $categories = get_terms(array(
         'taxonomy' => 'categorie',
@@ -107,7 +105,6 @@
 </section>
 
 <!-- Galerie photo -->
-
 <div class="galerie" id="ajax_return">
     <?php
 
@@ -119,7 +116,6 @@
             'order' => '',
             'orderby' => 'meta_value'
     ]);
-    
 
     if ($galeries->have_posts()) : ?>
 

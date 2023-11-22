@@ -1,5 +1,4 @@
 <div id="lightbox" class="lightbox">
-
     <span class="lightbox_close">&times;</span>     
 
     <button class='lightbox_next'>Suivante &rarr;</button>
@@ -14,5 +13,4 @@
             <p class="lightbox-ref"></p>
             <p class="lightbox-categorie"></p>
     </div>
-
 </div>

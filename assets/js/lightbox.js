@@ -13,21 +13,18 @@ window.addEventListener("DOMContentLoaded", () => {
   // Bouton de fermeture
   const btnCloseLightbox = document.querySelector('.lightbox_close');
 
-
   // Elements REF et CATEGORIE
   let lightboxRefElement = document.querySelector(".lightbox-ref");
   let lightboxCatElement = document.querySelector(".lightbox-categorie")
 
   let refValue ="";
   let catValue ="";
-  let srcValue ="";
 
   // Ouverture de la lightbox
   if(iconFullscreen != null ) {
     iconFullscreen.addEventListener("click",function() {
       lightbox.style.display = "block";
       lightbox.style.animationName = "fadein";
-
       }
     )
   }
@@ -53,13 +50,10 @@ window.addEventListener("DOMContentLoaded", () => {
     lightbox.style.animationName = "fadein";
 
     // Navigation lightbox
-
     // Flèche précédente
     let lightboxPrev = document.querySelector('.lightbox_prev');
     // Flèche suivante
     let lightboxNext = document.querySelector('.lightbox_next');
-
-    
 
     lightboxPrev.addEventListener('click', lightboxNav );
     lightboxNext.addEventListener('click', lightboxNav );
@@ -73,12 +67,10 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
     function lightboxNav(e) {
-
       // Source de l'image
       let srcCurrentPicture = document.getElementById('img-lightbox').src;
       // Index de la source de l'image
       let currentIndex = allGaleriePostsSrc.indexOf(srcCurrentPicture);
-
 
       if( e.target == lightboxPrev && currentIndex > 0) {
         currentIndex--
@@ -105,7 +97,6 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-
   iconFullscreenRecommandations.forEach((element) =>
     element.addEventListener("click", openLightbox)
   )
@@ -113,11 +104,9 @@ window.addEventListener("DOMContentLoaded", () => {
   // Fermeture de la lightbox
   btnCloseLightbox.onclick = function(e) {
     lightbox.style.animationName = "fadeout";
-    //console.log(e.target.parentNode.querySelector('#img-lightbox').src);
     setTimeout( () => {
       lightbox.style.display = "none";
     }, "1000");
-  //  e.target.parentNode.querySelector('#img-lightbox').src = null;
   };
 
 

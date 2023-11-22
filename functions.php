@@ -81,7 +81,6 @@ add_filter('wp_nav_menu_items', 'add_last_nav_item', 10, 2);
 
 
 // Filtres
-
 function motaphoto_request_filtered() {
     
     $categories = $_POST['categories'];
@@ -148,17 +147,3 @@ function motaphoto_request_filtered() {
 }
 add_action('wp_ajax_request_filtered', 'motaphoto_request_filtered');
 add_action('wp_ajax_nopriv_request_filtered', 'motaphoto_request_filtered');
-
-
-/*
-while ($query->have_posts()) {
-    $query->the_post(); 
-    $response[$query->post->ID]['post'] = $query->post;
-    $response[$query->post->ID]['category'] = get_the_terms($query->post->ID, 'categorie');
-    $response[$query->post->ID]['ref'] = get_field('reference');
-    $response[$query->post->ID]['the_post_thumbnail_url'] = get_the_post_thumbnail_url();
-    $response[$query->post->ID]['get_template_directory_uri'] = get_template_directory_uri();
-
-    $response['found_posts'] = $query->found_posts;
-} 
-*/

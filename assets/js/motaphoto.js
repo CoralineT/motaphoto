@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
       // Appliquer la taille calculée
       select.size = calculatedSize;
-
       select.parentElement.classList.add('opened');
     });
   });

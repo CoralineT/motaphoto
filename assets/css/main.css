@@ -508,6 +508,10 @@ li {
   align-items: center;
 }
 
+#sidebar {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
   html, body, main {
     width: fit-content;
